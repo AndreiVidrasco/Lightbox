@@ -83,7 +83,9 @@ class PageView: UIScrollView {
     addSubview(loadingIndicator)
 
     delegate = self
+    #if os(iOS)
     isMultipleTouchEnabled = true
+    #endif
     minimumZoomScale = LightboxConfig.Zoom.minimumScale
     maximumZoomScale = LightboxConfig.Zoom.maximumScale
     showsHorizontalScrollIndicator = false
@@ -91,7 +93,9 @@ class PageView: UIScrollView {
 
     let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(scrollViewDoubleTapped(_:)))
     doubleTapRecognizer.numberOfTapsRequired = 2
+    #if os(iOS)
     doubleTapRecognizer.numberOfTouchesRequired = 1
+    #endif
     addGestureRecognizer(doubleTapRecognizer)
 
     let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))

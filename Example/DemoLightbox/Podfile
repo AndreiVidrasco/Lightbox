@@ -4,3 +4,8 @@ target 'DemoLightbox' do
   use_frameworks!
 	pod 'Lightbox', path: '../../'
 end
+
+target 'DemoLightbox-tvOS' do
+    use_frameworks!
+    pod 'Lightbox', path: '../../'
+end

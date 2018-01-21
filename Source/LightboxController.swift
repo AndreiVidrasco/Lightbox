@@ -22,7 +22,9 @@ open class LightboxController: UIViewController {
 
   lazy var scrollView: UIScrollView = { [unowned self] in
     let scrollView = UIScrollView()
+    #if os(iOS)
     scrollView.isPagingEnabled = false
+    #endif
     scrollView.delegate = self
     scrollView.showsHorizontalScrollIndicator = false
     scrollView.decelerationRate = UIScrollViewDecelerationRateFast
@@ -163,9 +165,9 @@ open class LightboxController: UIViewController {
 
   open override func viewDidLoad() {
     super.viewDidLoad()
-
+    #if os(iOS)
     statusBarHidden = UIApplication.shared.isStatusBarHidden
-
+    #endif
     view.backgroundColor = UIColor.black
     transitionManager.lightboxController = self
     transitionManager.scrollView = scrollView
@@ -209,11 +211,11 @@ open class LightboxController: UIViewController {
       height: 100
     )
   }
-
+#if os(iOS)
   open override var prefersStatusBarHidden: Bool {
     return LightboxConfig.hideStatusBar
   }
-
+#endif
   // MARK: - Rotation
 
   override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
