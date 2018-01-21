@@ -10,8 +10,10 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.tvos.deployment_target = '9.2'
   s.requires_arc = true
-  s.source_files = 'Source/**/*'
+  s.ios.source_files = 'Source/**/*'
+  s.tvos.source_files = 'Source/**/*'
   s.ios.resource = 'Resources/Lightbox.bundle'
+  s.tvos.resource = 'Resources/Lightbox.bundle'
 
   s.frameworks = 'UIKit', 'AVFoundation', 'AVKit'
   s.dependency 'Hue', '~> 3.0'
